@@ -8,39 +8,39 @@
                 <label>
                 Name:
             </label>
-                <input class="form-control" type="text" formControlName="name">
+                <input class="form-control" type="text" formControlName="name" >
                         </div>
             <div class="form-group">
             <label>
               Date of Birth:
             </label>
-              <input class="form-control" type="text" formControlName="dob">
+              <input class="form-control" type="date" formControlName="dob" >
             
         </div>
         <div class="form-group">
             <label>
                 Qualification:
             </label>
-                <input class="form-control" type="text" formControlName="qualification">
+                <input class="form-control" type="text" formControlName="qualification" >
               
             </div>
             <div class="form-group">
               <label>
                 Email:
             </label>
-                <input class="form-control" type="text" formControlName="email">
+                <input class="form-control" type="email" formControlName="email">
               
             </div>
             <div class="form-group">
               <label>
                 Phone:
             </label>
-                <input class="form-control" type="text" formControlName="phone">
+                <input class="form-control" type="tel" formControlName="phone" >
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Address</label>
-                <textarea class="form-control" formControlName="address" rows="4" ></textarea>
+                <textarea class="form-control" formControlName="address" rows="4"></textarea>
               </div>
             <div>
                   
@@ -48,12 +48,12 @@
                 <label for="">Experience Type:
                   <span >
                     <label class="btn btn-primary">
-                    <input type="radio" name="fresher" formControlName="fresher"  value='fresh' autocomplete="off" > Fresher
+                    <input type="radio" name="fresher" formControlName="fresher"  value='Fresher' autocomplete="off" > Fresher
                   </label>
                 </span>&nbsp;
                 <span>
                   <label class="btn btn-primary">
-                    <input type="radio" name="fresher"  formControlName="fresher" value="exp" autocomplete="off"> Experienced
+                    <input type="radio" name="fresher"  formControlName="fresher" value="Experienced" autocomplete="off"> Experienced
                   </label>
                   
                 </span>
@@ -61,18 +61,18 @@
               </label>
               </div>
 
-            <div class="form-group" *ngIf="regForm.value.fresher=='exp'">
+            <div class="form-group" *ngIf="regForm.value.fresher=='Experienced'">
                 <div class="col-md-offset-2 col-md-4">
                 
-                <div formArrayName="experience" *ngFor="let exp of regForm.get('experience')['controls'];">
-                <div formGroupName="0">
+                <div formArrayName="experience" *ngFor="let exp of regForm.get('experience')['controls'];let i= index;">
+                <div [formGroupName]="i">
                   <div class="form-group">
                     <label for="">Skill: </label>
-                    <input class="form-control" type="text" formControlName="skill">
+                    <input class="form-control" value="" type="text" formControlName="skill">
                   </div>
                   <div class="form-group">
                     <label for="">Years:</label>
-                    <input class="form-control" type="text" formControlName="years">
+                    <input class="form-control" value="" type="text" formControlName="years">
                   </div>
                   
                     </div>
@@ -93,4 +93,10 @@
           
     </div>
     
+
+
+
+    
 </div>
+<router-outlet></router-outlet>
+

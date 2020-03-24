@@ -1,1 +1,40 @@
-hello{{form.value.name}}
+<div class="container">
+    <div>
+        <h2>Candidate Details</h2><hr>
+    </div>
+    <div class="form-group">
+        <strong>Name : </strong><span>{{formRes.name}}</span>
+    </div>
+    <div class="form-group">
+        <strong>DOB : </strong><span>{{formRes.dob}}</span>
+    </div>
+    <div class="form-group">
+        <strong>Qualification : </strong><span>{{formRes.qualification}}</span>
+    </div>
+    <div class="form-group">
+        <strong>Email : </strong><span>{{formRes.email}}</span>
+    </div>
+    <div class="form-group">
+        <strong>Phone : </strong><span>{{formRes.phone}}</span>
+    </div>
+    <div class="form-group">
+        <strong>Address : </strong><span>{{formRes.address}}</span>
+    </div>
+    <div class="form-group">
+        <strong>Experience Type : </strong><span>{{formRes.fresher}}</span>
+    </div>
+    <table class="table table-bordered" *ngIf="formRes.fresher=='Experienced'">
+        <thead>
+            <th>#</th>
+            <th>Skill</th>
+            <th>Experience (in years)</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let skill of formRes.experience;index as i">
+                <td>{{i}}</td>
+                <td>{{skill.skill}}</td>
+                <td>{{skill.years}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

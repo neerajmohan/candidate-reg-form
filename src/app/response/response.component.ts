@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { RegistrationComponent } from '../registration/registration.component';
+import { Component, OnInit } from '@angular/core';
+import { FormService } from '../form.service';
 
 @Component({
   selector: 'app-response',
@@ -7,10 +7,16 @@ import { RegistrationComponent } from '../registration/registration.component';
   styleUrls: ['./response.component.scss']
 })
 export class ResponseComponent implements OnInit {
-  @Input() form:any;
-  constructor() { }
+  formRes;
+  constructor( private form:FormService ) { }
 
   ngOnInit(): void {
+    this.form.form$.subscribe(
+      res => {
+        this.formRes = res['value'];
+        console.log(this.formRes);
+      }
+    );
   }
 
 }

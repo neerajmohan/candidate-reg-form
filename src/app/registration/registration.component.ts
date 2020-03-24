@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormService } from '../form.service';
 
 @Component({
   selector: 'app-registration',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
   
 
-  constructor(private router:Router,private fb:FormBuilder) { }
+  constructor(private router:Router,private fb:FormBuilder,private form: FormService ) { }
   regForm = this.fb.group({
     name: [''],
     dob: [''],
@@ -26,8 +27,10 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void { }
   onSubmit(){
-    console.warn(this.regForm.value);
-    // this.router.navigateByUrl(['/response',ss]);
+    // console.warn(this.regForm.value);
+    this.form.setValue(this.regForm);
+
+    this.router.navigateByUrl('/response');
   }
   addExpButtonClick():void{
     (<FormArray>this.regForm.get('experience')).push(this.addExpFormGroup());
