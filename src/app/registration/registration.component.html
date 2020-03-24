@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="d-flex flex-column">
+        <div>
+            <h2>Hi, please enter your details</h2><hr>
+        </div>
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()" >
+            <div class="form-group">
+                <label>
+                Name:
+            </label>
+                <input class="form-control" type="text" formControlName="name">
+                        </div>
+            <div class="form-group">
+            <label>
+              Date of Birth:
+            </label>
+              <input class="form-control" type="text" formControlName="dob">
+            
+        </div>
+        <div class="form-group">
+            <label>
+                Qualification:
+            </label>
+                <input class="form-control" type="text" formControlName="qualification">
+              
+            </div>
+            <div class="form-group">
+              <label>
+                Email:
+            </label>
+                <input class="form-control" type="text" formControlName="email">
+              
+            </div>
+            <div class="form-group">
+              <label>
+                Phone:
+            </label>
+                <input class="form-control" type="text" formControlName="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Address</label>
+                <textarea class="form-control" formControlName="address" rows="4" ></textarea>
+              </div>
+            <div>
+                  
+              <div class="btn-group btn-group-toggle form-group" >
+                <label for="">Experience Type:
+                  <span >
+                    <label class="btn btn-primary">
+                    <input type="radio" name="fresher" formControlName="fresher"  value='fresh' autocomplete="off" > Fresher
+                  </label>
+                </span>&nbsp;
+                <span>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="fresher"  formControlName="fresher" value="exp" autocomplete="off"> Experienced
+                  </label>
+                  
+                </span>
+                
+              </label>
+              </div>
+
+            <div class="form-group" *ngIf="regForm.value.fresher=='exp'">
+                <div class="col-md-offset-2 col-md-4">
+                
+                <div formArrayName="experience" *ngFor="let exp of regForm.get('experience')['controls'];">
+                <div formGroupName="0">
+                  <div class="form-group">
+                    <label for="">Skill: </label>
+                    <input class="form-control" type="text" formControlName="skill">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Years:</label>
+                    <input class="form-control" type="text" formControlName="years">
+                  </div>
+                  
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary" (click)="addExpButtonClick()">
+                    Add More
+                </button>
+                </div>
+                </div>
+
+            </div> 
+            
+              <!-- </div> -->
+              <div ><br>
+              <button  class="btn btn-success" type="submit" [disabled]="!regForm.valid">Submit</button>
+            </div>
+          </form>
+          
+    </div>
+    
+</div>
